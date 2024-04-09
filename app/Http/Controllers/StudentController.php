@@ -57,30 +57,34 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         $dataUpdate = [
             'name' => $request->name,
             'age' => $request->age, 
             'location' => $request->location,
         ];
-        $this->students->updateRow($dataUpdate, $id);
-        return response()->json(['message'=>'success'], 200);
+        $data = $this->students->updateRow($dataUpdate);
+        if ($data){
+            return response()->json(['message'=>'success'], 200);
+        } else {
+            return response()->json('error', 404);
+        }
+        
     }
     
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete()
     {
-        $student = Student::find($id);
-        if($student) {
+        $student = Student::skip(25)->take(1)->first();
+        if ($student) {
             $student->delete();
-            return response()->json(['message'=>'success'], 200);
-        }
-        else {
-            return response()->json(['message'=>'invalid'], 404);
+            return response()->json('Row 26 deleted successfully.', 200);
+        } else {
+            return response()->json('Row not found.', 404);
         }
     }
 }

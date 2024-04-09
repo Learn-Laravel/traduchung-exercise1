@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('people/{id}', [PersonController::class, 'getInfo']);
 Route::get('spost/{id}', [PostController::class, 'getPost']);
-Route::resource('/student', StudentController::class);
+// Route::resource('/student', StudentController::class);
+Route::put('student', [StudentController::class, 'update']);
