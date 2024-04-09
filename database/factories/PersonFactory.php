@@ -15,8 +15,8 @@ class PersonFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-       $faker = \Faker\Factory::create();
+    { $faker = \Faker\Factory::create();
+      
         return [
             'name' => $faker->name,
             'email' => $faker->unique()->safeEmail,
