@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PersonController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::get('people/{id}', [PersonController::class, 'getInfo']);
+Route::get('spost/{id}', [PostController::class, 'getPost']);

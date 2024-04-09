@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Person extends Model
+class Post extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    // Try to hide column: updated_at
+    public $timestamps = false; 
+    
 }
